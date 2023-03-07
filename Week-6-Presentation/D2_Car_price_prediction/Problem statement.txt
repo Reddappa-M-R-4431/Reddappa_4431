@@ -1,0 +1,4 @@
+Problem Statement:
+
+This dataset contains information about used cars.
+The problem statement is to make a model for vehicle price prediction using this dataset.
