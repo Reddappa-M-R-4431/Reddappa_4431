@@ -54,7 +54,7 @@ df = pd.read_csv("data.csv")
 pickle_in = open("lasso1.pkl","rb")
 lasso=pickle.load(pickle_in)
 
-nav = st.sidebar.radio("Navigation", ["Home","Prediction","Contribute"])
+nav = st.sidebar.radio("Navigation", ["Home","Prediction","About us"])
 if nav == "Home":
     st.image("Housing.jpg", width = 500)
     if st.checkbox("Show table"):
@@ -89,7 +89,7 @@ if nav == "Home":
 if nav == "Prediction":
     st.header("Know your House Price")
     crim = st.number_input("Enter crim",0.01,0.10,step=0.01)
-    zn = st.number_input("Enter zn",1.0,19.00,step=1.00)
+    zn = st.number_input("Enter zn",1.0,100.00,step=1.00)
     indus = st.number_input("Enter indus",1.0,15.00,step=1.00)
     chas = st.number_input("Enter chas",1.0,5.00,step=1.00)
     nox = st.number_input("Enter nox",0.01,1.00,step=0.01)
@@ -117,10 +117,9 @@ if nav == "Prediction":
         st.success(f"Your predicted medv is in $ {round(pred)}k")
 
 
-if nav == "Contribute":
-    st.header("Contribute to our dataset")
-    ex = st.number_input("Enter your age",0.0,100.0)
-    sal = st.number_input("Enter your medv",0.00, 50.00,step=1000.0)
+
+if nav == "About us":
+    st.header("About us")
+    
     if st.button("Submit"):
         st.success("Submitted")
-
