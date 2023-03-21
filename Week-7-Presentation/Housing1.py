@@ -7,6 +7,10 @@ from plotly import graph_objs as go
 from sklearn.preprocessing import StandardScaler
 
 
+base="dark"
+backgroundColor="#2963d6"
+secondaryBackgroundColor="#622ac9"
+
 
 
 
