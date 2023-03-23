@@ -54,6 +54,8 @@ st.title("Boston_Housing_Price")
 st.header("Predicting Price")
 
 df = pd.read_csv("data.csv")
+df1 = df.head()
+
 
 pickle_in = open("lasso1.pkl","rb")
 lasso=pickle.load(pickle_in)
@@ -63,7 +65,8 @@ if nav == "Home":
     st.image("Housing.jpg", width = 500)
     if st.checkbox("Show table"):
         st.table(df)
-
+    if st.checkbox("Show table of 5 rows"):
+        st.table(df1)
     val = st.slider("Filter df using age",0,100)
     df=df.loc[df["age"]>=val]
     
