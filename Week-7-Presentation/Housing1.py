@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from plotly import graph_objs as go
-from sklearn.preprocessing import StandardScaler
 
 
 base="dark"
@@ -12,6 +11,25 @@ backgroundColor="#2963d6"
 secondaryBackgroundColor="#622ac9"
 
 
+import numpy as np
+
+class StandardScaler:
+    def __init__(self):
+        self.mean = None
+        self.std = None
+    
+    def fit(self, X):
+        self.mean = np.mean(X, axis=0)
+        self.std = np.std(X, axis=0)
+    
+    def transform(self, X):
+        X_scaled = ((X - self.mean) / self.std)
+        return X_scaled
+    
+    def fit_transform(self, X):
+        self.fit(X)
+        X_scaled = self.transform(X)
+        return X_scaled
 
 
 class LassoRegression:
@@ -59,6 +77,9 @@ df1 = df.head()
 
 pickle_in = open("lasso1.pkl","rb")
 lasso=pickle.load(pickle_in)
+
+scale = open("scaler.pkl","rb")
+scaler=pickle.load(scale)
 
 nav = st.sidebar.radio("Navigation", ["Home","Prediction","About us"])
 if nav == "Home":
@@ -114,8 +135,7 @@ if nav == "Prediction":
     X_test = pd.DataFrame(val)
 
     # Scaling the dataset
-    scaler = StandardScaler()
-    X_test = scaler.fit_transform(X_test)
+    X_test = scaler.transform(X_test)
 
 
     
@@ -127,6 +147,7 @@ if nav == "Prediction":
 
 if nav == "About us":
     st.header("About us")
-    
+    st.write("Mob: 9980792638")
+    st.write("Email: reddymr2018@gmail.com")
     if st.button("Submit"):
         st.success("Submitted")
