@@ -3,8 +3,6 @@ import pickle
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from plotly import graph_objs as go
-
 
 base="dark"
 backgroundColor="#2963d6"
